@@ -35,7 +35,7 @@ console.log("Looking for: " + searchKey);
 
 async function run() {
   try {
-    const database = client.db('ckmdb');
+    const database = client.db('MongoRender');
     const parts = database.collection('aCollection');
 
     // Hardwired Query for a part that has partID '12345'
