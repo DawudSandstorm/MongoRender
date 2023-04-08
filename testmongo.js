@@ -1,4 +1,5 @@
 const { MongoClient } = require("mongodb");
+const fs = require("fs");
 
 // The uri string must be the connection string for the database (obtained on Atlas).
 const uri = "mongodb+srv://robertrussell3:billybob23@cluster0.rijqciz.mongodb.net/?retryWrites=true&w=majority";
@@ -14,7 +15,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // routes will go here
-
+fs.readFile("./customer.json", "utf8", (err, jsonString) => {
+  if (err) {
+    console.log("File read failed:", err);
+    return;
+  }
+  console.log("File data:", jsonString);
+});
 // Default route:
 app.get('/', function(req, res) {
   const myquery = req.query;
